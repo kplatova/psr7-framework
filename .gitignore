@@ -6,3 +6,4 @@ public/
 *.sublime-project
 *.sublime-workspace
 .DS_Store
+phpunit.xml.dist
