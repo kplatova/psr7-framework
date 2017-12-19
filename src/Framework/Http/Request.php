@@ -8,6 +8,7 @@ class Request
     {
         return $_GET;
     }
+
     public function getParsedBody(): array
     {
         return $_POST ?: null;
