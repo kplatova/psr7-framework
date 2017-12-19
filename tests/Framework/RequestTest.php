@@ -7,11 +7,16 @@ use PHPUnit\Framework\TestCase;
 
 class RequestTest extends TestCase
 {
-    public function testEmpty(): void
+    protected function setUp()
     {
+        parent::setUp();
+
         $_GET = [];
         $_POST = [];
+    }
 
+    public function testEmpty(): void
+    {
         $request = new Request();
 
         self::assertEquals([], $request->getQueryParams());
@@ -24,17 +29,18 @@ class RequestTest extends TestCase
             'name' => 'John',
             'age' => 28,
         ];
-        $_POST = [];
 
-        $request = new Request();
+        $request1 = new Request();
+        $request2 = new Request();
 
-        self::assertEquals($data, $request->getQueryParams());
-        self::assertNull($request->getParsedBody());
+        self::assertEquals($data, $request1->getQueryParams());
+        self::assertEquals($data, $request2->getQueryParams());
+        self::assertNull($request1->getParsedBody());
+        self::assertNull($request2->getParsedBody());
     }
 
     public function testParsedBody(): void
     {
-        $_GET = [];
         $_POST = $data = ['title' => 'title'];
 
         $request = new Request();
