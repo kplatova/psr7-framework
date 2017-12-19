@@ -1,0 +1,8 @@
+vendor/
+.idea/
+node_modules/
+npm-debug.log
+public/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
